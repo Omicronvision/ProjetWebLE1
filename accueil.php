@@ -19,11 +19,11 @@ $requete = $bdd->prepare($sql);
 $requete->execute();
 $programmes = $requete->fetchAll(PDO::FETCH_ASSOC);
 
-// Requête pour récupérer les noms des exercices
-$sql_exercices = 'SELECT NomExercice FROM Exercice';
-$bdd_exercices = $bdd->prepare($sql_exercices);
-$bdd_exercices->execute();
-$exercices = $bdd_exercices->fetchAll(PDO::FETCH_ASSOC);
+// Requête pour récupérer les noms des exercices, leurs charges, séries et répétitions
+$sql_exercices = 'SELECT NomExercice, Charge, Series, Repetitions FROM Exercice';
+$requete_exercices = $bdd->prepare($sql_exercices);
+$requete_exercices->execute();
+$exercices = $requete_exercices->fetchAll(PDO::FETCH_ASSOC);
 
 // Limiter le nombre d'exercices affichés à 6
 $exercices_affiches = array_slice($exercices, 0, 6);
@@ -177,7 +177,7 @@ $exercices_affiches = array_slice($exercices, 0, 6);
                         <h3><?php echo htmlspecialchars($programme['NomProgramme']); ?> <span>Lundi</span></h3>
                         <ul>
                             <?php foreach ($exercices_affiches as $exercice): ?>
-                                <li><?php echo htmlspecialchars($exercice['NomExercice']); ?> - charge (kg) - X séries - X répétitions</li>
+                                <li><?php echo htmlspecialchars($exercice['NomExercice']); ?> - charge (kg) <?php echo htmlspecialchars($exercice['Charge']); ?> - <?php echo htmlspecialchars($exercice['Series']); ?> séries - <?php echo htmlspecialchars($exercice['Repetitions']); ?> répétitions</li>
                             <?php endforeach; ?>
                         </ul>
                         <button class="modify" onclick="location.href='index.php?view=modifier'">Modifier</button>

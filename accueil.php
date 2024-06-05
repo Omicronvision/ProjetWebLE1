@@ -79,10 +79,12 @@ $exercices_affiches = array_slice($exercices, 0, 6);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 50%;
         }
 
         .programmes {
             flex: 2;
+            width: 50%;
         }
 
         .programmes h2 {
@@ -158,7 +160,7 @@ $exercices_affiches = array_slice($exercices, 0, 6);
             margin-bottom: 20px;
         }
 
-        j'ai une base de données.diagram img {
+        .Diagramme des muscles img {
             max-width: 100%;
             height: auto;
         }
@@ -177,8 +179,9 @@ $exercices_affiches = array_slice($exercices, 0, 6);
                         <h3><?php echo htmlspecialchars($programme['NomProgramme']); ?> <span>Lundi</span></h3>
                         <ul>
                             <?php foreach ($exercices_affiches as $exercice): ?>
-                                <li><?php echo htmlspecialchars($exercice['NomExercice']); ?> - charge (kg) <?php echo htmlspecialchars($exercice['Charge']); ?> - <?php echo htmlspecialchars($exercice['Series']); ?> séries - <?php echo htmlspecialchars($exercice['Repetitions']); ?> répétitions</li>
+                                <li><?php echo htmlspecialchars($exercice['NomExercice']); ?> - <?php echo htmlspecialchars($exercice['Charge']); ?> charge (kg) - <?php echo htmlspecialchars($exercice['Series']); ?> séries - <?php echo htmlspecialchars($exercice['Repetitions']); ?> répétitions</li>
                             <?php endforeach; ?>
+                            ...
                         </ul>
                         <button class="modify" onclick="location.href='index.php?view=modifier'">Modifier</button>
                         <button class="lauch" onclick="location.href='index.php?view=lancer'">Lancer</button>
